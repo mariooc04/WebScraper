@@ -4,7 +4,7 @@ use select::predicate::Name;
 use url::Url;
 
 // Function to do Scrapping of a known website
-fn scrap_web(url: &str) {
+fn scrap_web(url: &str) -> Result<(), Box<dyn std::error::Error>> {
     let client = Client::new();
     let response = client.get(url).send()?.text()?;
 
@@ -25,10 +25,18 @@ fn scrap_web(url: &str) {
             }
         }
     }
+
+    Ok(())
 }
 
 fn main() {
-    let url = "https://www.rust-lang.org/";
-    scrap_web(url);
+    let url = "https://www.github.com/";
+
+    if let Err(e) = scrap_web(url) {
+        eprintln!("Error: {}", e);
+    }
+    else {
+        println!("Scraping done!");
+    }
 
 }
