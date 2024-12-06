@@ -1,5 +1,3 @@
-use std::os::unix::net::SocketAddr;
-
 use reqwest::blocking::Client;
 use select::document::Document;
 use select::predicate::Name;
