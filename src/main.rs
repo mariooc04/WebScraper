@@ -3,25 +3,10 @@ use scrapping::scrap_web;
 use scrapping::search_dir_files;
 
 
-#[tokio::main]
-async fn main() {
-    let result = tokio::spawn(async {
-        let url = "https://www.github.com/";
+fn main() {
+    let url = "https://github.com";
 
-        match scrap_web(url).await {
-            Ok(data) => println!("Scrapping result: {:?}", data),
-            Err(err) => eprintln!("Error during scraping: {}", err),
-        }
-
-        // Otras operaciones asincrónicas
-    })
-    .await;
-
-    if let Err(e) = result {
-        eprintln!("Error in spawned task: {:?}", e);
-    }
-
-
+    let _ = scrapping::scrap_web(url);
 
     // Test of search_dir_files function (future test with a dictionary)
     /* let dirs = vec!["src", "main", "test"];

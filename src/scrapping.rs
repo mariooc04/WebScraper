@@ -7,7 +7,7 @@ use url::Url;
 
 
 // Function to do Scrapping of a known website
-pub async fn scrap_web(url: &str) -> Result<(), Box<dyn std::error::Error>> {
+pub fn scrap_web(url: &str) -> Result<(), Box<dyn std::error::Error>> {
     let client = Client::new();
     let response = client.get(url).send()?.text()?;
 
