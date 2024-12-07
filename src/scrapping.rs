@@ -1,3 +1,7 @@
+/*
+ * This module contains the functions to do scrapping and search for dirs and files in a url
+*/
+
 use reqwest::blocking::Client;
 use select::document::Document;
 use select::predicate::Name;
